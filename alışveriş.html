@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alışveriş Sepeti</title>
+    <link rel="stylesheet" href="özellik.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Alışveriş Sepeti</h1>
+    
+    <h2>Ürünlerimiz</h2>
+    <div id="urunler">
+        <div class="urun" data-id="1" data-name="Telefon" data-fiyat="91000">
+            <img src="gorseller/telefon.png" alt="" class="urunfoto">
+           <p class="urunad">Telefon - 91.000 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+        <div class="urun" data-id="2" data-name="Bilgisayar" data-fiyat="59000">
+            <img src="gorseller/bilgisayar.png" alt="" class="urunfoto">
+            <p class="urunad">Bilgisayar - 59.000 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="3" data-name="Kulaklık" data-fiyat="3000">
+            <img src="gorseller/kulaklik.png" alt="" class="urunfoto">
+            <p class="urunad">Kulaklık - 3.000 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="4" data-name="Hoparlör" data-fiyat="750">
+            <img src="gorseller/hoparlor.png" alt="" class="urunfoto">
+            <p class="urunad">Hoparlör - 750 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="4" data-name="Fotoğraf Makinesi" data-fiyat="4800">
+            <img src="gorseller/fotografmakinesi.png" alt="" class="urunfoto">
+            <p class="urunad">Fotoğraf Makinesi - 4.800 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="4" data-name="Klima" data-fiyat="27000">
+            <img src="gorseller/klima.png" alt="" class="urunfoto">
+            <p class="urunad">Klima - 27.000 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="4" data-name="Playstation 5" data-fiyat="33000">
+            <img src="gorseller/ps5.png" alt="" class="urunfoto">
+            <p class="urunad">Playstation 5 - 33.000 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+        <div class="urun" data-id="4" data-name="Süpürge" data-fiyat="13000">
+            <img src="gorseller/supurge.png" alt="" class="urunfoto">
+            <p class="urunad">Süpürge - 13.000 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="4" data-name="Tablet" data-fiyat="24500">
+            <img src="gorseller/tablet.png" alt="" class="urunfoto">
+            <p class="urunad">Tablet - 24.500 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="4" data-name="Televizyon" data-fiyat="40000">
+            <img src="gorseller/televizyon.png" alt="" class="urunfoto">
+            <p class="urunad">Televizyon - 40.000 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+
+        <div class="urun" data-id="4" data-name="Yazıcı" data-fiyat="8500">
+            <img src="gorseller/yazici.png" alt="" class="urunfoto">
+            <p class="urunad">Yazıcı - 8.500 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+        
+        <div class="urun" data-id="4" data-name="Saç Kurutma Makinesi" data-fiyat="3400">
+            <img src="gorseller/sackurutmamakinesi.png" alt="" class="urunfoto">
+            <p class="urunad">Saç Kurutma Makinesi - 3.400 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+        
+        <div class="urun" data-id="4" data-name="Tıraş Makinesi" data-fiyat="1200">
+            <img src="gorseller/tirasmakinesi.png" alt="" class="urunfoto">
+            <p class="urunad">Tıraş Makinesi - 1.200 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+        
+        <div class="urun" data-id="4" data-name="Ütü" data-fiyat="2750">
+            <img src="gorseller/utu.png" alt="" class="urunfoto">
+            <p class="urunad">Ütü - 2.750 TL</p>  
+            <button class="sepeteekle">Sepete Ekle</button>
+        </div>
+       
+    
+    </div>
+
+    <div id="sepetbaslik">
+        <h2>Sepet</h2>
+        <p id="toplamTutar">Toplam Tutar: 0 TL</p>
+        <div id="sepet">
+            <p id="sepetbos">Sepetiniz Boş</p>
+        </div>
+    </div>
+
+
+    <script> 
+        var toplamFiyat = 0;
+        $(document).ready(function() {
+            $('.sepeteekle').click(function() {
+                var urun = $(this).parent('.urun');
+                var urunId = urun.data('id');
+                var urunAdi = urun.data('name');
+                var urunDegeri = urun.data('fiyat');
+                if($('#sepetbos').length) {
+                    $('#sepetbos').remove();
+                }        
+
+                sepeteekle(urunId, urunAdi, urunDegeri);
+            });
+        });
+
+        function sepeteekle(id, name, fiyat) {
+            var sepetoge = $('<div class="sepetoge" id="' + id + '">' + name + ' - ' + fiyat + ' TL <button class="sepettenkaldir">Sepetten Çıkar</button></div>');
+            $('#sepet').append(sepetoge);
+            sepetGuncelle();
+        }
+
+        //Ürün çıkarma
+        $(document).on('click', '.sepettenkaldir', function() {
+            $(this).parent('.sepetoge').remove();
+            // sepetKontrol();
+            sepetGuncelle();
+            
+        });
+
+
+        function sepetGuncelle() {
+            // Sepet güncelleme başlamadan önce urunFiyatListe dizisini sıfırla
+            urunFiyatListe = [];
+
+            $('.sepetoge').each(function() {
+                var urunIsmi = $(this).text();
+                var urunFiyatMetni = urunIsmi.split('-')[1];
+                var urunFiyat = parseFloat(urunFiyatMetni);
+
+                urunFiyatListe.push(urunFiyat);
+            });
+
+            var toplamFiyat = 0;
+            for (var i = 0 ; i < urunFiyatListe.length; i++ ) {
+                toplamFiyat += urunFiyatListe[i];
+            }
+            if (toplamFiyat == 0) {
+                $('#sepet').append('<p id="sepetbos">Sepetiniz Boş</p>');
+
+            }
+            $('#toplamTutar').text('Toplam Tutar: ' + toplamFiyat.toFixed(2) + ' TL');
+        }
+
+
+        function sepetKontrol() {
+            var divElement = document.getElementById("sepet");
+            var children = divElement.children;
+
+            var hasTag = false;
+
+            for (var i = 0; i < children.length; i++) {
+                if (children[i].tagName) {
+                    hasTag = true;
+                    break;
+                }
+            }
+
+            if (!hasTag) {
+                $('#sepet').append('<p id="sepetbos">Sepetiniz Boş</p>');
+                
+            }
+            
+        }
+
+  
+    </script>
+</body>
+</html>
